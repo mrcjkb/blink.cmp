@@ -2,12 +2,15 @@ name: Test Nix Build
 
 on:
   push:
+    branches:
+      - main
+  pull_request:
 
 jobs:
   build:
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [macos-13]
     name: Test Nix Build on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     permissions:
@@ -18,4 +21,4 @@ jobs:
       - uses: DeterminateSystems/magic-nix-cache-action@main
 
       - name: Build with Nix
-        run: nix build .#blink-cmp
+        run: nix build .#blink-cmp -Lv
