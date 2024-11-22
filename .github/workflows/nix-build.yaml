@@ -10,7 +10,7 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [macos-13]
     name: Test Nix Build on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     permissions:
